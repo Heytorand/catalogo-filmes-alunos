@@ -5,8 +5,8 @@ import cors from "cors";
 import { pageRoutes } from "./routes/pageRoutes";
 import { apiRoutes } from "./routes/apiRoutes";
 
-import { limiterGeral } from "./middlewares/rateLimiter.ts";
-import { sanitizar } from "./middlewares/sanitizar.ts";
+import { limiterGeral } from "./middlewares/rateLimiter";
+import { sanitizar } from "./middlewares/sanitizar";
 
 const app = express();
 
