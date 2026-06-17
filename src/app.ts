@@ -13,10 +13,10 @@ const app = express();
 // 1. Segurança: Helmet
 app.use(helmet());
 
-// 2. CORS restrito
+// 2. CORS (ajuste para seu frontend)
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:3000", // pode trocar para "*" se quiser liberar geral
   })
 );
 
@@ -27,19 +27,19 @@ app.use(limiterGeral);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// 5. Sanitização automática
+// 5. Sanitização
 app.use(sanitizar);
 
-// 6. Arquivos estáticos
+// 6. Arquivos estáticos (HTML, CSS, JS)
 app.use(express.static("public"));
 
-// 7. Configuração do EJS
+// 7. EJS (caso use renderização)
 app.set("view engine", "ejs");
 app.set("views", "./src/views");
 
-// 8. Rotas
+// 8. ROTAS (IMPORTANTE: /api aqui!)
 app.use(pageRoutes);
-app.use(apiRoutes);
+app.use("/api", apiRoutes);
 
 // 9. Iniciar servidor
 app.listen(3000, () => {
